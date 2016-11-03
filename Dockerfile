@@ -1,4 +1,8 @@
 FROM alpine:3.4
+
+RUN apk update &&\
+    apk add --no-cache openssl-dev perl-dev autoconf automake heimdal-dev libtool libcap-dev linux-headers
+
 RUN apk --no-cache add alpine-sdk coreutils \
   && adduser -G abuild -g "Alpine Package Builder" -s /bin/ash -D builder \
   && echo "builder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
